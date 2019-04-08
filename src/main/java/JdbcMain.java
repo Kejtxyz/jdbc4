@@ -7,23 +7,18 @@ public class JdbcMain {
     public static final String PASSWORD = "123";
 
     public static void main(String[] args) {
-            try {
-                Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-                Statement statement = connection.createStatement();
-                statement.addBatch("update zawodnicy set wzrost=180 where imie='Martin'");
-                int[] ints = statement.executeBatch();
-                for (int i: ints){
-                    System.out.println("zmienilem " + i);
-                }
-                connection.close();
+        try {
+            Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+            Statement statement = connection.createStatement();
+            statement.addBatch("update zawodnicy set wzrost=180 where imie='Martin'");
+            int[] ints = statement.executeBatch();
+            for (int i : ints) {
+                System.out.println("zmienilem " + i);
             }
-            catch (SQLException e){
-                e.printStackTrace();
-            }
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
-
-
-
-    }
 }
+
